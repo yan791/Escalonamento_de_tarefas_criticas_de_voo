@@ -23,10 +23,10 @@ int ler_tempo(const char *linha, int *tempo) {
 }
 
 int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
-    FILE *arq;
+    FILE *arq = fopen(nome_arquivo, "r");
     char linha[LINE_SIZE];
-
-    arq = fopen(nome_arquivo, "r");
+    int numero_linha = 1;
+    int capacidade = 0;
 
     if (!arq) {
         fprintf(stderr, "Erro: nao foi possivel abrir '%s'.\n", nome_arquivo);
@@ -37,6 +37,43 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
         fprintf(stderr, "Erro: a primeira linha deve ter um inteiro positivo.\n");
         fclose(arq);
         return 0;
+    }
+
+    while (fgets(linha, sizeof(linha), arq)) {
+        Tarefa atual;
+        char sobra;
+        int campos;
+
+        numero_linha++;
+
+        if (linha_vazia(linha)) {
+            continue;
+        }
+
+        campos = sscanf(
+            linha,
+            " %31s %d %d %d %c",
+            atual.nome,
+            &atual.periodo,
+            &atual.deadline,
+            &atual.burst,
+            &sobra
+        );
+
+        if (campos != 4) {
+            fprintf(stderr, "Erro: formato invalido na linha %d.\n", numero_linha);
+            fclose(arq);
+            return 0;
+        }
+
+        if (sim->quantidade == capacidade) {
+            capacidade = capacidade ? capacidade * 2 : 4;
+
+            sim->tarefas = realloc(sim->tarefas,(size_t) capacidade * sizeof(Tarefa));
+        }
+
+        sim->tarefas[sim->quantidade] = atual;
+        sim->quantidade++;
     }
 
     fclose(arq);
