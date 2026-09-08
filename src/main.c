@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     }
 
     for (i = 0; i < 10; i++) {
-        int tarefa = i % sim.quantidade;
+        int tarefa = i < 5 ? 0 : 1;
 
         if (!guardar_trecho(&hist, i, tarefa)) {
             fprintf(stderr, "Erro ao armazenar trecho.\n");
@@ -47,10 +47,14 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf(
-        "Algoritmo selecionado: %s\n",
-        algoritmo == RATE ? "RATE" : "EDF"
-    );
+    if (hist.qtd_trechos != 2) {
+    fprintf(stderr,"Erro: esperado 2 trechos, obtido %d.\n",hist.qtd_trechos);
+        free(hist.trechos);
+        liberar_dados(&sim);
+        return 1;
+    }
+    printf("Algoritmo selecionado: %s\n",algoritmo == RATE ? "RATE" : "EDF");
+
     printf("Tarefas carregadas: %d\n", sim.quantidade);
     printf("Trechos armazenados: %d\n", hist.qtd_trechos);
     printf("Capacidade do historico: %d\n", hist.cap_trechos);
