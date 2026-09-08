@@ -13,6 +13,17 @@ typedef struct {
     int periodo;
     int deadline;
     int burst;
+
+    int restante;
+    int chegada;
+    int deadline_absoluto;
+    int ativa;
+
+    int liberadas;
+    int concluidas;
+    int perdidas;
+    int encerradas;
+    int tempo_cpu;
 } Tarefa;
 
 typedef struct {
@@ -20,6 +31,19 @@ typedef struct {
     int quantidade;
     Tarefa *tarefas;
 } Simulacao;
+
+typedef struct {
+    int inicio;
+    int fim;
+    int tarefa;
+    char motivo;
+} Trecho;
+
+typedef struct {
+    Trecho *trechos;
+    int qtd_trechos;
+    int cap_trechos;
+} Historico;
 
 int ler_entrada(const char *nome_arquivo, Simulacao *sim);
 void liberar_dados(Simulacao *sim);
