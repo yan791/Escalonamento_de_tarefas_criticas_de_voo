@@ -69,3 +69,17 @@ int escolher_tarefa(const Simulacao *sim, Algoritmo algoritmo) {
 
     return escolhida;
 }
+
+void checar_prazos(Simulacao *sim, int tempo) {
+    int i;
+
+    for (i = 0; i < sim->quantidade; i++) {
+        Tarefa *tarefa = &sim->tarefas[i];
+
+        if (tarefa->ativa && tarefa->deadline_absoluto == tempo) {
+            tarefa->ativa = 0;
+            tarefa->restante = 0;
+            tarefa->perdidas++;
+        }
+    }
+}

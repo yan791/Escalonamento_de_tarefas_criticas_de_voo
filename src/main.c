@@ -54,11 +54,7 @@ int main(int argc, char **argv) {
     }
 
     if (hist.qtd_trechos != 2) {
-        fprintf(
-            stderr,
-            "Erro: esperado 2 trechos, obtido %d.\n",
-            hist.qtd_trechos
-        );
+        fprintf(stderr,"Erro: esperado 2 trechos, obtido %d.\n",hist.qtd_trechos);
         free(hist.trechos);
         liberar_dados(&sim);
         return 1;
@@ -66,8 +62,13 @@ int main(int argc, char **argv) {
 
     sim.tarefas[0].ativa = 1;
     sim.tarefas[1].ativa = 1;
+
+    sim.tarefas[0].restante = 2;
+    sim.tarefas[1].restante = 3;
+
     sim.tarefas[0].deadline_absoluto = 10;
     sim.tarefas[1].deadline_absoluto = 7;
+    
 
     if (escolher_tarefa(&sim, RATE) != 0) {
         fprintf(stderr, "Erro no teste do algoritmo RATE.\n");
@@ -82,7 +83,16 @@ int main(int argc, char **argv) {
         liberar_dados(&sim);
         return 1;
     }
+    checar_prazos(&sim, 7);
 
+    if (sim.tarefas[1].ativa) {
+        fprintf(stderr,"Erro: tarefa com deadline 7 continua ativa no tempo 7.\n");
+    free(hist.trechos);
+    liberar_dados(&sim);
+    return 1;
+}
+
+printf("Teste de deadline perdido: OK\n");
     printf("Algoritmo selecionado: %s\n",algoritmo == RATE ? "RATE" : "EDF");
     printf("Tarefas carregadas: %d\n", sim.quantidade);
     printf("Trechos armazenados: %d\n", hist.qtd_trechos);
