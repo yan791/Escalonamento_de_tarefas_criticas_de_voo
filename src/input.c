@@ -22,6 +22,19 @@ int ler_tempo(const char *linha, int *tempo) {
     return sscanf(linha, " %d %c", tempo, &sobra) == 1;
 }
 
+int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
+    FILE *arq;
+    char linha[LINE_SIZE];
+
+    arq = fopen(nome_arquivo, "r");
+
+    fgets(linha, sizeof(linha), arq);
+    ler_tempo(linha, &sim->tempo_total);
+
+    fclose(arq);
+    return 1;
+}
+
 void liberar_dados(Simulacao *sim) {
     free(sim->tarefas);
     sim->tarefas = NULL;
