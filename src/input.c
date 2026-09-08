@@ -66,6 +66,13 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
             return 0;
         }
 
+        if (atual.periodo <= 0 || atual.deadline <= 0 || atual.burst <= 0) {
+            fprintf(stderr, "Erro: valor nao positivo na linha %d.\n", numero_linha);
+            fclose(arq);
+            liberar_dados(sim);
+            return 0;
+        }
+
         if (sim->quantidade == capacidade) {
             capacidade = capacidade ? capacidade * 2 : 4;
 
