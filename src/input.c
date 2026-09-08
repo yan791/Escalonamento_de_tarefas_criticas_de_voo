@@ -16,6 +16,12 @@ int linha_vazia(const char *linha) {
     return 1;
 }
 
+int ler_tempo(const char *linha, int *tempo) {
+    char sobra;
+
+    return sscanf(linha, " %d %c", tempo, &sobra) == 1;
+}
+
 void liberar_dados(Simulacao *sim) {
     free(sim->tarefas);
     sim->tarefas = NULL;

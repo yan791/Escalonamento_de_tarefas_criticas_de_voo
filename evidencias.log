@@ -1,0 +1,34 @@
+Script iniciado em 2026-09-08 09:39:15-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="12"]
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [7mcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ gti[K[Kit add .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "[7minicia modulo de leitura da entrada"[27minicia modulo de leitura da entrada"
+[?2004l[main 2b491e9] inicia modulo de leitura da entrada
+ 3 files changed, 12 insertions(+)
+ create mode 100644 evidencias.log
+ create mode 100644 src/input.c
+ create mode 100644 src/input.o
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 8, done.
+Counting objects:  12% (1/8)Counting objects:  25% (2/8)Counting objects:  37% (3/8)Counting objects:  50% (4/8)Counting objects:  62% (5/8)Counting objects:  75% (6/8)Counting objects:  87% (7/8)Counting objects: 100% (8/8)Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects:  20% (1/5)Compressing objects:  40% (2/5)Compressing objects:  60% (3/5)Compressing objects:  80% (4/5)Compressing objects: 100% (5/5)Compressing objects: 100% (5/5), done.
+Writing objects:  16% (1/6)Writing objects:  33% (2/6)Writing objects:  50% (3/6)Writing objects:  66% (4/6)Writing objects:  83% (5/6)Writing objects: 100% (6/6)Writing objects: 100% (6/6), 1.11 KiB | 380.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
+   77878be..2b491e9  main -> main
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+make: *** Sem regra para processar o alvo 'src/simulation.o', necessário por 'scheduler'.  Pare.
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ mk[Ksm[K[Kskr v[K[K[K[K[K[Ka[Kmake clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git add .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "[7madiciona verificacao de linhas vazias"[27madiciona verificacao de linhas vazias"
+[?2004l[main 561b227] adiciona verificacao de linhas vazias
+ 2 files changed, 12 insertions(+)
+ delete mode 100644 src/input.o
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 7, done.
+Counting objects:  14% (1/7)Counting objects:  28% (2/7)Counting objects:  42% (3/7)Counting objects:  57% (4/7)Counting objects:  71% (5/7)Counting objects:  85% (6/7)Counting objects: 100% (7/7)Counting objects: 100% (7/7), done.
