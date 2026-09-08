@@ -28,8 +28,15 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
 
     arq = fopen(nome_arquivo, "r");
 
-    fgets(linha, sizeof(linha), arq);
-    ler_tempo(linha, &sim->tempo_total);
+    if (!arq) {
+        fprintf(stderr, "Erro: nao foi possivel abrir '%s'.\n", nome_arquivo);
+        return 0;
+    }
+
+    if (!fgets(linha, sizeof(linha), arq) || !ler_tempo(linha, &sim->tempo_total)) {
+        fprintf(stderr, "Erro: a primeira linha deve ter um inteiro positivo.\n");
+        return 0;
+    }
 
     fclose(arq);
     return 1;
