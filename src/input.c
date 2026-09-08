@@ -33,14 +33,16 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
         return 0;
     }
 
-    if (!fgets(linha, sizeof(linha), arq) || !ler_tempo(linha, &sim->tempo_total) || sim->tempo_total <= 0) {
+    if (!fgets(linha, sizeof(linha), arq) ||
+        !ler_tempo(linha, &sim->tempo_total) ||
+        sim->tempo_total <= 0) {
         fprintf(stderr, "Erro: a primeira linha deve ter um inteiro positivo.\n");
         fclose(arq);
         return 0;
     }
 
     while (fgets(linha, sizeof(linha), arq)) {
-        Tarefa atual;
+        Tarefa atual = {0};
         char sobra;
         int campos;
 
@@ -61,36 +63,68 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
         );
 
         if (campos != 4) {
-            fprintf(stderr, "Erro: formato invalido na linha %d.\n", numero_linha);
-            fclose(arq);
-            return 0;
-        }
-
-        if (atual.periodo <= 0 || atual.deadline <= 0 || atual.burst <= 0) {
-            fprintf(stderr, "Erro: valor nao positivo na linha %d.\n", numero_linha);
+            fprintf(stderr,"Erro: formato invalido na linha %d.\n",numero_linha);
             fclose(arq);
             liberar_dados(sim);
             return 0;
         }
 
-        if (atual.burst > atual.deadline || atual.deadline > atual.periodo) {
-            fprintf(stderr, "Erro: a linha %d nao respeita C <= D <= P.\n",numero_linha);
+        if (atual.periodo <= 0 ||
+            atual.deadline <= 0 ||
+            atual.burst <= 0) {
+            fprintf(stderr,"Erro: valor nao positivo na linha %d.\n",numero_linha);
+            fclose(arq);
+            liberar_dados(sim);
+            return 0;
+        }
+
+        if (atual.burst > atual.deadline ||
+            atual.deadline > atual.periodo) {
+            fprintf(stderr,"Erro: a linha %d nao respeita C <= D <= P.\n",numero_linha);
             fclose(arq);
             liberar_dados(sim);
             return 0;
         }
 
         if (sim->quantidade == capacidade) {
-            capacidade = capacidade ? capacidade * 2 : 4;
+            Tarefa *novo;
+            int nova_capacidade = capacidade ? capacidade * 2 : 4;
 
-            sim->tarefas = realloc(sim->tarefas,(size_t) capacidade * sizeof(Tarefa));
+            novo = realloc(
+                sim->tarefas,
+                (size_t) nova_capacidade * sizeof(Tarefa)
+            );
+
+            if (!novo) {
+                fprintf(stderr, "Erro: memoria insuficiente.\n");
+                fclose(arq);
+                liberar_dados(sim);
+                return 0;
+            }
+
+            sim->tarefas = novo;
+            capacidade = nova_capacidade;
         }
 
         sim->tarefas[sim->quantidade] = atual;
         sim->quantidade++;
     }
 
+    if (ferror(arq)) {
+        fprintf(stderr, "Erro ao ler o arquivo '%s'.\n", nome_arquivo);
+        fclose(arq);
+        liberar_dados(sim);
+        return 0;
+    }
+
     fclose(arq);
+
+    if (!sim->quantidade) {
+        fprintf(stderr, "Erro: nenhuma tarefa foi informada.\n");
+        liberar_dados(sim);
+        return 0;
+    }
+
     return 1;
 }
 
