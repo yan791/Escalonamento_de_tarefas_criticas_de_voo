@@ -173,4 +173,41 @@ To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
 [?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make ce[Klean
 [?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
 [?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [7mgit add src/input.c[27mgit add src/input.c
-[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [7mgit commit -m "fix: trata erros de leitura e
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [7mgit commit -m "fix: trata erros de leitura e arquivos sem tarefas"[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit commit -m "fix: trata erros de leitura e arquivos sem tarefas"[1P[1P[1P[1P[1P
+[?2004l[main 18a81fe] trata erros de leitura e arquivos sem tarefas
+ 1 file changed, 44 insertions(+), 10 deletions(-)
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 7, done.
+Counting objects:  14% (1/7)Counting objects:  28% (2/7)Counting objects:  42% (3/7)Counting objects:  57% (4/7)Counting objects:  71% (5/7)Counting objects:  85% (6/7)Counting objects: 100% (7/7)Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)Writing objects:  50% (2/4)Writing objects:  75% (3/4)Writing objects: 100% (4/4)Writing objects: 100% (4/4), 755 bytes | 755.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/2)[Kremote: Resolving deltas:  50% (1/2)[Kremote: Resolving deltas: 100% (2/2)[Kremote: Resolving deltas: 100% (2/2), completed with 2 local objects.[K
+To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
+   8b572ec..18a81fe  main -> main
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git c[Kadd .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "adicionando as structs [K"
+[?2004l[main 1a8cf13] adicionando as structs
+ 2 files changed, 89 insertions(+), 1 deletion(-)
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting objects:  22% (2/9)Counting objects:  33% (3/9)Counting objects:  44% (4/9)Counting objects:  55% (5/9)Counting objects:  66% (6/9)Counting objects:  77% (7/9)Counting objects:  88% (8/9)Counting objects: 100% (9/9)Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects:  25% (1/4)Compressing objects:  50% (2/4)Compressing objects:  75% (3/4)Compressing objects: 100% (4/4)Compressing objects: 100% (4/4), done.
+Writing objects:  20% (1/5)Writing objects:  40% (2/5)Writing objects:  60% (3/5)Writing objects:  80% (4/5)Writing objects: 100% (5/5)Writing objects: 100% (5/5), 1.32 KiB | 1.32 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/1)[Kremote: Resolving deltas: 100% (1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
+   18a81fe..1a8cf13  main -> main
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [7m./scheduler rate entrada_teste.txt[27m./scheduler rate entrada_teste.txt
+[?2004lAlgoritmo selecionado: RATE
+Tarefas carregadas: 2
+Trechos armazenados: 10
+Capacidade do historico: 16
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;

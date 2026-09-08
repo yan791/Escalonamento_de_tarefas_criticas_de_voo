@@ -47,5 +47,5 @@ typedef struct {
 
 int ler_entrada(const char *nome_arquivo, Simulacao *sim);
 void liberar_dados(Simulacao *sim);
-
+int guardar_trecho(Historico *hist, int tempo, int tarefa);
 #endif
