@@ -4,6 +4,18 @@
 #include "scheduler.h"
 #define LINE_SIZE 256
 
+int linha_vazia(const char *linha) {
+    int i;
+
+    for (i = 0; linha[i]; i++) {
+        if (!isspace((unsigned char) linha[i])) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
 void liberar_dados(Simulacao *sim) {
     free(sim->tarefas);
     sim->tarefas = NULL;
