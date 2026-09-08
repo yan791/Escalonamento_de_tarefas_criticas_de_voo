@@ -73,6 +73,13 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
             return 0;
         }
 
+        if (atual.burst > atual.deadline || atual.deadline > atual.periodo) {
+            fprintf(stderr, "Erro: a linha %d nao respeita C <= D <= P.\n",numero_linha);
+            fclose(arq);
+            liberar_dados(sim);
+            return 0;
+        }
+
         if (sim->quantidade == capacidade) {
             capacidade = capacidade ? capacidade * 2 : 4;
 
