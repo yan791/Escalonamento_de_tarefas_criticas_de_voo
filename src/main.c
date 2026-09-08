@@ -36,6 +36,12 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    if (sim.quantidade < 2) {
+        fprintf(stderr, "Erro: o teste precisa de pelo menos duas tarefas.\n");
+        liberar_dados(&sim);
+        return 1;
+    }
+
     for (i = 0; i < 10; i++) {
         int tarefa = i < 5 ? 0 : 1;
 
@@ -48,16 +54,41 @@ int main(int argc, char **argv) {
     }
 
     if (hist.qtd_trechos != 2) {
-    fprintf(stderr,"Erro: esperado 2 trechos, obtido %d.\n",hist.qtd_trechos);
+        fprintf(
+            stderr,
+            "Erro: esperado 2 trechos, obtido %d.\n",
+            hist.qtd_trechos
+        );
         free(hist.trechos);
         liberar_dados(&sim);
         return 1;
     }
-    printf("Algoritmo selecionado: %s\n",algoritmo == RATE ? "RATE" : "EDF");
 
+    sim.tarefas[0].ativa = 1;
+    sim.tarefas[1].ativa = 1;
+    sim.tarefas[0].deadline_absoluto = 10;
+    sim.tarefas[1].deadline_absoluto = 7;
+
+    if (escolher_tarefa(&sim, RATE) != 0) {
+        fprintf(stderr, "Erro no teste do algoritmo RATE.\n");
+        free(hist.trechos);
+        liberar_dados(&sim);
+        return 1;
+    }
+
+    if (escolher_tarefa(&sim, EDF) != 1) {
+        fprintf(stderr, "Erro no teste do algoritmo EDF.\n");
+        free(hist.trechos);
+        liberar_dados(&sim);
+        return 1;
+    }
+
+    printf("Algoritmo selecionado: %s\n",algoritmo == RATE ? "RATE" : "EDF");
     printf("Tarefas carregadas: %d\n", sim.quantidade);
     printf("Trechos armazenados: %d\n", hist.qtd_trechos);
     printf("Capacidade do historico: %d\n", hist.cap_trechos);
+    printf("Teste de escolha por RATE: OK\n");
+    printf("Teste de escolha por EDF: OK\n");
 
     free(hist.trechos);
     liberar_dados(&sim);

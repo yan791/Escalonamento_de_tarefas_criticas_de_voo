@@ -38,3 +38,34 @@ int guardar_trecho(Historico *hist, int tempo, int tarefa) {
 
     return 1;
 }
+
+int escolher_tarefa(const Simulacao *sim, Algoritmo algoritmo) {
+    int escolhida = -1;
+    int i;
+
+    for (i = 0; i < sim->quantidade; i++) {
+        const Tarefa *candidata = &sim->tarefas[i];
+        const Tarefa *atual;
+
+        if (!candidata->ativa) {
+            continue;
+        }
+
+        if (escolhida == -1) {
+            escolhida = i;
+            continue;
+        }
+
+        atual = &sim->tarefas[escolhida];
+
+        if (algoritmo == RATE &&
+            candidata->periodo < atual->periodo) {
+            escolhida = i;
+        } 
+        else if (algoritmo == EDF && candidata->deadline_absoluto <   atual->deadline_absoluto) {
+            escolhida = i;
+        }
+    }
+
+    return escolhida;
+}
