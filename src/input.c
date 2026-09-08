@@ -33,8 +33,9 @@ int ler_entrada(const char *nome_arquivo, Simulacao *sim) {
         return 0;
     }
 
-    if (!fgets(linha, sizeof(linha), arq) || !ler_tempo(linha, &sim->tempo_total)) {
+    if (!fgets(linha, sizeof(linha), arq) || !ler_tempo(linha, &sim->tempo_total) || sim->tempo_total <= 0) {
         fprintf(stderr, "Erro: a primeira linha deve ter um inteiro positivo.\n");
+        fclose(arq);
         return 0;
     }
 
