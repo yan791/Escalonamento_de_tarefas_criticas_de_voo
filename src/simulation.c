@@ -143,7 +143,10 @@ int salvar_saida(
     for (i = 0; i < sim->quantidade; i++) {
         fprintf(saida,"[%s] %d\n",sim->tarefas[i].nome,sim->tarefas[i].encerradas);
     }
+    if (fclose(saida)) {
+        fprintf(stderr,"Erro ao finalizar '%s'.\n",nome_saida);
+    return 0;
+    }
 
-    fclose(saida);
-    return 1;
+return 1;
 }
