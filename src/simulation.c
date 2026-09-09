@@ -174,7 +174,8 @@ int executar(
         int escolhida;
         Tarefa *rodando;
 
-        int prev_estava_ativa = prev_escolhida != -1 &&sim->tarefas[prev_escolhida].ativa;
+        int prev_estava_ativa = prev_escolhida != -1 && sim->tarefas[prev_escolhida].ativa;
+        int prev_perdeu_agora = prev_estava_ativa && sim->tarefas[prev_escolhida].deadline_absoluto == tempo;
 
         checar_prazos(sim, tempo);
         criar_instancias(sim, tempo);
@@ -182,7 +183,7 @@ int executar(
         escolhida = escolher_tarefa(sim, algoritmo);
 
         if (prev_escolhida != -1 && prev_escolhida != escolhida && prev_estava_ativa) {
-            hist.trechos[hist.qtd_trechos - 1].motivo = 'H';
+            hist.trechos[hist.qtd_trechos - 1].motivo = prev_perdeu_agora ? 'L' : 'H';
         }
 
         if (!guardar_trecho(&hist, tempo, escolhida)) {
@@ -217,6 +218,5 @@ int executar(
     }
 
     free(hist.trechos);
-
     return resultado;
 }
