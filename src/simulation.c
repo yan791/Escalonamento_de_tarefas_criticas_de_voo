@@ -150,3 +150,58 @@ int salvar_saida(
 
 return 1;
 }
+
+int executar(
+    Simulacao *sim,
+    Algoritmo algoritmo,
+    const char *nome_saida
+) {
+    Historico hist = {0};
+    int erro_memoria = 0;
+    int tempo;
+
+    for (tempo = 0;
+         tempo < sim->tempo_total && !erro_memoria;
+         tempo++) {
+        int escolhida;
+        Tarefa *rodando;
+
+        checar_prazos(sim, tempo);
+        criar_instancias(sim, tempo);
+
+        escolhida = escolher_tarefa(sim, algoritmo);
+
+        if (!guardar_trecho(&hist, tempo, escolhida)) {
+            erro_memoria = 1;
+            break;
+        }
+
+        if (escolhida == -1) {
+            continue;
+        }
+
+        rodando = &sim->tarefas[escolhida];
+
+        rodando->restante--;
+        rodando->tempo_cpu++;
+
+        if (!rodando->restante) {
+            rodando->ativa = 0;
+            rodando->concluidas++;
+
+            hist.trechos[hist.qtd_trechos - 1].motivo = 'F';
+        }
+    }
+
+    if (erro_memoria) {
+        fprintf(stderr,"Erro: memoria insuficiente durante a simulacao.\n");
+        free(hist.trechos);
+        return 0;
+    }
+
+    free(hist.trechos);
+
+    (void) nome_saida;
+
+    return 1;
+}

@@ -544,3 +544,31 @@ To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
 [?2004lexit
 
 Script concluído em 2026-09-09 10:05:30-03:00 [COMMAND_EXIT_CODE="0"]
+Script iniciado em 2026-09-09 11:48:53-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="125" LINES="11"]
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+[01m[Ksrc/simulation.c:[m[K In function ‘[01m[Kexecutar[m[K’:
+[01m[Ksrc/simulation.c:180:13:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
+  180 |         if ([01;35m[Kescolhida[m[K = -1) {
+      |             [01;35m[K^~~~~~~~~[m[K
+[01m[Ksrc/simulation.c:164:36:[m[K [01;35m[Kwarning: [m[K‘[01m[Kerro_memoria[m[K’ may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+  164 |          [01;35m[Ktempo <= sim->tempo_total && !erro_memoria[m[K;
+      |          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[01m[Ksrc/simulation.c:160:9:[m[K [01;36m[Knote: [m[K‘[01m[Kerro_memoria[m[K’ was declared here
+  160 |     int [01;36m[Kerro_memoria[m[K;
+      |         [01;36m[K^~~~~~~~~~~~[m[K
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+[01m[Ksrc/simulation.c:[m[K In function ‘[01m[Kexecutar[m[K’:
+[01m[Ksrc/simulation.c:180:13:[m[K [01;35m[Kwarning: [m[Ksuggest parentheses around assignment used as truth value [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wparentheses-Wparentheses]8;;[m[K]
+  180 |         if ([01;35m[Kescolhida[m[K = -1) {
+      |             [01;35m[K^~~~~~~~~[m[K
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:
