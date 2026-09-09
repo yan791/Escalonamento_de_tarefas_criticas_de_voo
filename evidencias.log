@@ -393,4 +393,45 @@ make: *** [Makefile:9: scheduler] Erro 1
 [?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
 [?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
 [01m[Ksrc/main.c:[m[K In function ‘[01m[Kmain[m[K’:
-[01m[Ksrc/main.c:76:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kescol_tarefa[m[K’; did you mean ‘[01m[Kescolher_tarefa[m[K’? [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wi
+[01m[Ksrc/main.c:76:9:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kescol_tarefa[m[K’; did you mean ‘[01m[Kescolher_tarefa[m[K’? [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wimplicit-function-declaration-Wimplicit-function-declaration]8;;[m[K]
+   76 |     if ([01;35m[Kescol_tarefa[m[K(&sim, RATE) != 0) {
+      |         [01;35m[K^~~~~~~~~~~~[m[K
+      |         [32m[Kescolher_tarefa[m[K
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+/usr/bin/ld: src/main.o: na função "main":
+main.c:(.text+0x2d7): undefined reference to `escol_tarefa'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:9: scheduler] Erro 1
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean[K clean[Kgit pushscript -a evidencias.log"evidencias.log"exit[Kgit pushcommit -m "verifica deadline no instante correto"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake clean./scheduler rate entrada_teste.txtmake[K./scheduler rate entrada_teste.txtmake[K./scheduler rate entrada_teste.txt
+[?2004lTeste de guardar_trecho: OK
+Teste de escolha por RATE: OK
+Teste de escolha por EDF: OK
+Teste de deadline perdido: OK
+Teste de criacao das instancias: OK
+Algoritmo selecionado: RATE
+Tarefas carregadas: 2
+Trechos armazenados: 2
+Capacidade do historico: 8
+Arquivo de saida criado: rate_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ gita dd .
+[?2004lComando 'gita' não encontrado, mas poder ser instalado com:
+sudo apt install gita
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git add .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "[7madiciona gravacao inicial do resultado"[27madiciona gravacao inicial do resultado"
+[?2004l[main b2ed3c2] adiciona gravacao inicial do resultado
+ 4 files changed, 88 insertions(+), 17 deletions(-)
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 15, done.
+Counting objects:   6% (1/15)Counting objects:  13% (2/15)Counting objects:  20% (3/15)Counting objects:  26% (4/15)Counting objects:  33% (5/15)Counting objects:  40% (6/15)Counting objects:  46% (7/15)Counting objects:  53% (8/15)Counting objects:  60% (9/15)Counting objects:  66% (10/15)Counting objects:  73% (11/15)Counting objects:  80% (12/15)Counting objects:  86% (13/15)Counting objects:  93% (14/15)Counting objects: 100% (15/15)Counting objects: 100% (15/15), done.
+Delta compression using up to 4 threads

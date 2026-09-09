@@ -104,9 +104,8 @@ int salvar_saida(
     const char *nome_saida,
     const Historico *hist
 ) {
-    FILE *saida;
-
-    saida = fopen(nome_saida, "w");
+    FILE *saida = fopen(nome_saida, "w");
+    int i;
 
     if (!saida) {
         fprintf(stderr,"Erro: nao foi possivel criar '%s'.\n",nome_saida);
@@ -115,11 +114,8 @@ int salvar_saida(
 
     fprintf(saida,"EXECUTION BY %s\n",algoritmo == RATE ? "RATE" : "EDF");
 
+    for (i = 0; i < hist->qtd_trechos; i++) { const Trecho *trecho = &hist->trechos[i]; int duracao = trecho->fim - trecho->inicio; if (trecho->tarefa == -1) { fprintf(saida,"idle for %d units\n",duracao); } else { fprintf(saida,"[%s] for %d units - %c\n",sim->tarefas[trecho->tarefa].nome,duracao,trecho->motivo); } }
+
     fclose(saida);
-
-   
-    (void) sim;
-    (void) hist;
-
     return 1;
 }
