@@ -90,6 +90,10 @@ void criar_instancias(Simulacao *sim, int tempo) {
     for (i = 0; i < sim->quantidade; i++) {
         Tarefa *tarefa = &sim->tarefas[i];
 
+        if (tempo % tarefa->periodo) {
+            continue;
+        }
+
         tarefa->ativa = 1;
         tarefa->restante = tarefa->burst;
         tarefa->chegada = tempo;
@@ -161,6 +165,7 @@ int executar(
     Historico hist = {0};
     int erro_memoria = 0;
     int resultado = 0;
+    int prev_escolhida = -1;
     int tempo;
 
     for (tempo = 0;
@@ -169,10 +174,16 @@ int executar(
         int escolhida;
         Tarefa *rodando;
 
+        int prev_estava_ativa = prev_escolhida != -1 &&sim->tarefas[prev_escolhida].ativa;
+
         checar_prazos(sim, tempo);
         criar_instancias(sim, tempo);
 
         escolhida = escolher_tarefa(sim, algoritmo);
+
+        if (prev_escolhida != -1 && prev_escolhida != escolhida && prev_estava_ativa) {
+            hist.trechos[hist.qtd_trechos - 1].motivo = 'H';
+        }
 
         if (!guardar_trecho(&hist, tempo, escolhida)) {
             erro_memoria = 1;
@@ -180,6 +191,7 @@ int executar(
         }
 
         if (escolhida == -1) {
+            prev_escolhida = -1;
             continue;
         }
 
@@ -191,9 +203,10 @@ int executar(
         if (!rodando->restante) {
             rodando->ativa = 0;
             rodando->concluidas++;
-
             hist.trechos[hist.qtd_trechos - 1].motivo = 'F';
         }
+
+        prev_escolhida = escolhida;
     }
 
     if (erro_memoria) {
