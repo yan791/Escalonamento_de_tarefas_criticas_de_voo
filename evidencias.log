@@ -571,4 +571,43 @@ cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simula
   180 |         if ([01;35m[Kescolhida[m[K = -1) {
       |             [01;35m[K^~~~~~~~~[m[K
 cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
-[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean[K clean[Kgit pishushcommit -m "libera novas instancias conforme o periodo"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake clean./scheduler rate entrada_teste.txt
+[?2004lTeste de guardar_trecho: OK
+Teste de escolha por RATE: OK
+Teste de escolha por EDF: OK
+Teste de deadline perdido: OK
+Teste de criacao das instancias: OK
+Algoritmo selecionado: RATE
+Tarefas carregadas: 2
+Trechos armazenados: 2
+Capacidade do historico: 8
+Arquivo de saida criado: rate_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ ./scheduler rate entrada_teste.txtmake[K clean[K clean[Kgit pishushcommit -m "libera novas instancias conforme o periodo"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake clean./scheduler rate entrada_teste.txtmake[K clean[6Pexitgit pushcommit -m "adiciona contadores ao arquivo de saida"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake cleancat rate_yrn.out./scheduler rate entrada_teste.txt[18Pcat rate_yrn.out
+[?2004lEXECUTION BY RATE
+[NAV] for 5 units - ?
+[COM] for 5 units - ?
+LOST DEADLINES
+[NAV] 0
+[COM] 1
+COMPLETE EXECUTION
+[NAV] 0
+[COM] 0
+KILLED
+[NAV] 0
+[COM] 0
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git add .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "[7mexecuta tarefas e registra uso da CPU"[27mexecuta tarefas e registra uso da CPU"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@a[1@j[1@u[1@s[1@t[C[1@e[1@s[1@ [1@n[1@a[1@ [1@p[1@a[1@r[1@t[C[1@e[1@ [1@d[C[1@e[1@ [1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@a[1@j[1@u[1@s[1@t[C[1@e[1@s[1@ [1@n[1@a[1@ [1@f[1@u[1@n[1@c[1@a[1@o[1@ [C[1@e[1@x[C[1@e[1@c[1@u[1@t[1@a[1@r[C[C[C[C[C[C[C[1P[1P[1P[1P[1P[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[main 8bfcb55] ajustes na funcao executar tarefas e registra uso da CPU
+ 2 files changed, 83 insertions(+)
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git push
+[?2004lEnumerating objects: 9, done.
+Counting objects:  11% (1/9)Counting 
