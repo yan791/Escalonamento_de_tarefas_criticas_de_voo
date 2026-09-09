@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "scheduler.h"
 
@@ -89,14 +90,36 @@ void criar_instancias(Simulacao *sim, int tempo) {
     for (i = 0; i < sim->quantidade; i++) {
         Tarefa *tarefa = &sim->tarefas[i];
 
-        if (tempo == tarefa->periodo) {
-            continue;
-        }
-
         tarefa->ativa = 1;
         tarefa->restante = tarefa->burst;
         tarefa->chegada = tempo;
         tarefa->deadline_absoluto = tempo + tarefa->deadline;
         tarefa->liberadas++;
     }
+}
+
+int salvar_saida(
+    const Simulacao *sim,
+    Algoritmo algoritmo,
+    const char *nome_saida,
+    const Historico *hist
+) {
+    FILE *saida;
+
+    saida = fopen(nome_saida, "w");
+
+    if (!saida) {
+        fprintf(stderr,"Erro: nao foi possivel criar '%s'.\n",nome_saida);
+        return 0;
+    }
+
+    fprintf(saida,"EXECUTION BY %s\n",algoritmo == RATE ? "RATE" : "EDF");
+
+    fclose(saida);
+
+   
+    (void) sim;
+    (void) hist;
+
+    return 1;
 }

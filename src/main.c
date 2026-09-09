@@ -9,6 +9,7 @@ void mostrar_uso(const char *programa) {
 
 int main(int argc, char **argv) {
     Algoritmo algoritmo;
+    const char *saida;
     Simulacao sim = {0};
     Historico hist = {0};
     int i;
@@ -23,15 +24,15 @@ int main(int argc, char **argv) {
     } 
     else if (!strcmp(argv[1], "edf")) {
         algoritmo = EDF;
-    }
-     else {
-        fprintf(
-            stderr,
-            "Erro: algoritmo invalido '%s'. Use rate ou edf.\n",
-            argv[1]
-        );
+    } 
+    else {
+        fprintf(stderr,"Erro: algoritmo invalido '%s'. Use rate ou edf.\n",argv[1]);
         return 1;
     }
+
+    saida = algoritmo == RATE
+        ? "rate_yrn.out"
+        : "edf_yrn.out";
 
     if (!ler_entrada(argv[2], &sim)) {
         return 1;
@@ -72,7 +73,6 @@ int main(int argc, char **argv) {
     sim.tarefas[0].deadline_absoluto = 10;
     sim.tarefas[1].deadline_absoluto = 7;
 
-    
     if (escolher_tarefa(&sim, RATE) != 0) {
         fprintf(stderr, "Erro no teste do algoritmo RATE.\n");
         free(hist.trechos);
@@ -90,9 +90,12 @@ int main(int argc, char **argv) {
     }
 
     printf("Teste de escolha por EDF: OK\n");
+
     checar_prazos(&sim, 7);
 
-    if (sim.tarefas[1].ativa || sim.tarefas[1].restante != 0 || sim.tarefas[1].perdidas != 1) {
+    if (sim.tarefas[1].ativa ||
+        sim.tarefas[1].restante != 0 ||
+        sim.tarefas[1].perdidas != 1) {
         fprintf(stderr,"Erro ao contabilizar o deadline perdido.\n");
         free(hist.trechos);
         liberar_dados(&sim);
@@ -100,10 +103,7 @@ int main(int argc, char **argv) {
     }
 
     if (!sim.tarefas[0].ativa) {
-        fprintf(
-            stderr,
-            "Erro: tarefa com deadline futuro foi removida.\n"
-        );
+        fprintf(stderr,"Erro: tarefa com deadline futuro foi removida.\n");
         free(hist.trechos);
         liberar_dados(&sim);
         return 1;
@@ -133,6 +133,15 @@ int main(int argc, char **argv) {
     printf("Tarefas carregadas: %d\n", sim.quantidade);
     printf("Trechos armazenados: %d\n", hist.qtd_trechos);
     printf("Capacidade do historico: %d\n", hist.cap_trechos);
+
+
+    if (!salvar_saida(&sim, algoritmo, saida, &hist)) {
+        free(hist.trechos);
+        liberar_dados(&sim);
+        return 1;
+    }
+
+    printf("Arquivo de saida criado: %s\n", saida);
 
     free(hist.trechos);
     liberar_dados(&sim);
