@@ -83,3 +83,20 @@ void checar_prazos(Simulacao *sim, int tempo) {
         }
     }
 }
+void criar_instancias(Simulacao *sim, int tempo) {
+    int i;
+
+    for (i = 0; i < sim->quantidade; i++) {
+        Tarefa *tarefa = &sim->tarefas[i];
+
+        if (tempo == tarefa->periodo) {
+            continue;
+        }
+
+        tarefa->ativa = 1;
+        tarefa->restante = tarefa->burst;
+        tarefa->chegada = tempo;
+        tarefa->deadline_absoluto = tempo + tarefa->deadline;
+        tarefa->liberadas++;
+    }
+}
