@@ -47,17 +47,6 @@ typedef struct {
 
 int ler_entrada(const char *nome_arquivo, Simulacao *sim);
 void liberar_dados(Simulacao *sim);
-int guardar_trecho(Historico *hist, int tempo, int tarefa);
-int escolher_tarefa(const Simulacao *sim, Algoritmo algoritmo);
-void checar_prazos(Simulacao *sim, int tempo);
-void criar_instancias(Simulacao *sim, int tempo);
-
-int salvar_saida(
-    const Simulacao *sim,
-    Algoritmo algoritmo,
-    const char *nome_saida,
-    const Historico *hist
-);
 
 int executar(
     Simulacao *sim,
