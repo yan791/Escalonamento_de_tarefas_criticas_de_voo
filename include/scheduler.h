@@ -59,4 +59,10 @@ int salvar_saida(
     const Historico *hist
 );
 
+int executar(
+    Simulacao *sim,
+    Algoritmo algoritmo,
+    const char *nome_saida
+);
+
 #endif
