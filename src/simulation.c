@@ -167,6 +167,7 @@ int executar(
     int resultado = 0;
     int prev_escolhida = -1;
     int tempo;
+    int i;
 
     for (tempo = 0;
          tempo < sim->tempo_total && !erro_memoria;
@@ -197,7 +198,6 @@ int executar(
         }
 
         rodando = &sim->tarefas[escolhida];
-
         rodando->restante--;
         rodando->tempo_cpu++;
 
@@ -208,6 +208,32 @@ int executar(
         }
 
         prev_escolhida = escolhida;
+    }
+
+    if (!erro_memoria) {
+        int estava_ativa_no_fim = prev_escolhida != -1 && sim->tarefas[prev_escolhida].ativa;
+
+        checar_prazos(sim, sim->tempo_total);
+
+        if (estava_ativa_no_fim && !sim->tarefas[prev_escolhida].ativa) {
+            hist.trechos[hist.qtd_trechos - 1].motivo = 'L';
+        }
+
+        for (i = 0; i < sim->quantidade; i++) {
+            Tarefa *tarefa = &sim->tarefas[i];
+
+            if (!tarefa->ativa) {
+                continue;
+            }
+
+            tarefa->ativa = 0;
+            tarefa->restante = 0;
+            tarefa->encerradas++;
+
+            if (i == prev_escolhida) {
+                hist.trechos[hist.qtd_trechos - 1].motivo = 'K';
+            }
+        }
     }
 
     if (erro_memoria) {

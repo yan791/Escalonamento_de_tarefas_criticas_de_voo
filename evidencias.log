@@ -757,3 +757,37 @@ To https://github.com/yan791/Escalonamento_de_tarefas_criticas_de_voo.git
 [?2004lexit
 
 Script concluído em 2026-09-09 12:29:19-03:00 [COMMAND_EXIT_CODE="0"]
+Script iniciado em 2026-09-09 15:02:57-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="182" LINES="17"]
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ [K]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean]
+[?2004lmake: *** Sem regra para processar o alvo 'clean]'.  Pare.
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean][K
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make
+[?2004lcc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/main.c -o src/main.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/input.c -o src/input.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude -c src/simulation.c -o src/simulation.o
+cc -std=c11 -Wall -Wextra -Wpedantic -Iinclude src/main.o src/input.o src/simulation.o -o scheduler
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ .;[K[Kmake clean]script -a evidencias.log[16Pgit pushcommit -m "adicionando o relogio principal da simulacao"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake clean./scheduler rate entrada_teste.txtmake[K./scheduler rate entrada_teste.txt
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ ./scheduler rate entrada_teste.txtmake[K clean]script -a evidencias.log[16Pgit pushcommit -m "adicionando o relogio principal da simulacao"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kmake clean./scheduler rate entrada_teste.txtmake[Kgit pushcommit -m "ajustes na verificacao falha ao finalizar arquivo de saida"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cadd .[Kcommit -m "ajustes na verificacao falha ao finalizar arquivo de saida"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake clean[Kcat rate_yrn.out./scheduler rate entrada_teste.txt[18Pcat rate_yrn.out
+[?2004lEXECUTION BY RATE
+[NAV] for 2 units - F
+[COM] for 3 units - F
+[NAV] for 2 units - F
+idle for 3 units
+[NAV] for 2 units - F
+[COM] for 3 units - F
+[NAV] for 2 units - F
+idle for 3 units
+LOST DEADLINES
+[NAV] 0
+[COM] 0
+COMPLETE EXECUTION
+[NAV] 4
+[COM] 2
+KILLED
+[NAV] 0
+[COM] 0
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ make clean
+[?2004lrm -f src/main.o src/input.o src/simulation.o scheduler rate_yrn.out edf_yrn.out
+[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git add .
+[?2004l[?2004h]0;yan@yan-VirtualBox: ~/Área de trabalho/yrn[01;32myan@yan-VirtualBox[00m:[01;34m~/Área de trabalho/yrn[00m$ git commit -m "[7mdiferencia deadline perdido de preempcao"[27mdiferencia deadline perdido de preempcao"[C[C[C[1@a[1@j[1@u[1@s[1@t[1@e[1@ [1@n[1@a
